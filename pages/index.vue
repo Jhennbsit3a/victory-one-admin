@@ -4,7 +4,7 @@
       <v-col cols="12" sm="10" md="6" lg="4">
         <v-card class="sign-in-card">
           <v-card-text class="text-center mt-4">
-            <h2>Sign In</h2>
+            <h2>Admin Sign In</h2>
           </v-card-text>
 
           <v-card-text>
@@ -45,7 +45,8 @@
               <v-btn 
                 @click="signIn" 
                 :disabled="loading" 
-                class="primary-btn full-width" 
+                class="primary-btn full-width"
+                color="orange" 
                 block
               >
                 <v-icon v-if="loading" left>mdi-loading</v-icon>

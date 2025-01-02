@@ -3,7 +3,7 @@
     <!-- App Bar -->
     <v-app-bar v-if="showDrawer" app style="background-color: #333; color: white;">
       <v-app-bar-nav-icon @click="drawer = !drawer" style="color: white;"></v-app-bar-nav-icon>
-      <v-toolbar-title>Panel</v-toolbar-title>
+      <v-toolbar-title>Admin</v-toolbar-title>
     </v-app-bar>
 
     <!-- Navigation Drawer -->
@@ -70,12 +70,8 @@ export default {
         { icon: 'mdi-warehouse', title: 'Inventory Management', to: '/admin/inventory', roles: ['admin', 'cashier'] },
         { icon: 'mdi-credit-card', title: 'Payment Methods', to: '/admin/payments', roles: ['admin'] },
         { icon: 'mdi-qrcode', title: 'QR Code', to: '/admin/qrscanner', roles: ['admin', 'cashier'] },
-        { icon: 'mdi-card-account-details-outline', title: 'Driver Module', to: '/driver/ddmodule', roles: ['admin','driver'] },
-        { icon: 'mdi-truck-alert-outline', title: 'Dispatch Module', to: '/dispatch/dmodule', roles: ['admin', 'dispatch'] },
       ],
       showDrawerOnRoutes: [
-        '/driver/ddmodule',
-        '/dispatch/dmodule',
         '/admin/dashboard',
         '/admin/accounts',
         '/admin/products',
