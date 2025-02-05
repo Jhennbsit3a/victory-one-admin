@@ -73,7 +73,7 @@
   
   <script>
   import { collection, query, where, onSnapshot } from 'firebase/firestore';
-  import { firestore } from '~/plugins/firebase';
+  import { firestore, getDocs } from '~/plugins/firebase';
   
   export default {
     data() {
