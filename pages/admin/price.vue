@@ -1,6 +1,24 @@
 <template>
     <v-container>
       <v-row>
+      <v-snackbar
+        v-model="snackbar"
+        top
+        elevation="24"
+      >
+        {{ inform }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="pink"
+            text
+            v-bind="attrs"
+            @click="closeInform"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
         <v-col cols="12" class="mb-4">
           <v-card class="elevation-2">
             <v-card-title class="headline text-center">
@@ -103,6 +121,9 @@
           ChangedAt: "",
           ChangedBy: "",
         },
+        snackbar: false,
+inform: '',
+
         priceSubmitButtonText: "Add Price Change",
         priceIdToEdit: null,
         deleteDialog: false,
@@ -124,6 +145,9 @@
       },
     },
     methods: {
+    closeInform(){
+      this.snackbar = false
+    },
       async getCurrentUserDetails() {
         const auth = getAuth();
         onAuthStateChanged(auth, async (user) => {
@@ -208,7 +232,9 @@
           const productSnap = await getDoc(productRef);
   
           if (!productSnap.exists()) {
-            alert("Product not found.");
+            // alert("Product not found.");
+                    this.snackbar = true
+        this.inform = "Product not found."
             return;
           }
   
@@ -237,7 +263,9 @@
           this.closeAddPriceDialog(); // Close the dialog after submission
         } catch (error) {
           console.error("Error submitting price change:", error);
-          alert("Failed to submit price change. Please try again.");
+                  this.snackbar = true
+        this.inform = "Failed to submit price change. Please try again."
+          // alert("Failed to submit price change. Please try again.");
         }
       },
       resetPriceForm() {
@@ -271,7 +299,9 @@
           this.deleteDialog = false;
         } catch (error) {
           console.error("Error deleting price history:", error);
-          alert("Failed to delete price history. Please try again.");
+                  this.snackbar = true
+        this.inform = "Failed to delete price history. Please try again."
+          // alert("Failed to delete price history. Please try again.");
         }
       },
     },
